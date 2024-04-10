@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="chat" />
+    <meta name="apple-mobile-web-app-title" content="Jomart jurek" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="icon"
+      href="../../../img/apple/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta http-equiv="Cache-Control" content="max-age=31536000" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../../../../../../public/img/apple/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../../../../../../public/img/apple/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../../../../../../public/img/apple/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../../../../../../public/img/apple/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../../../../../../public/img/apple/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../../../../../../public/img/apple/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../../../../../../public/img/apple/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../../../../public/img/apple/apple-touch-icon-180x180.png"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src-attr 'self';base-uri 'none';form-action 'self';object-src 'none'; manifest-src 'self';worker-src 'self';style-src-attr 'self' 'unsafe-inline';media-src 'self';upgrade-insecure-requests;"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="document-state" content="Dynamic" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="../../../../../../public/img/logo.png" />
+    <meta name="publisher" content="" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta property="og:url" content="" />
+    <meta name="author" content="" />
+
+    <title>Jomart jurek</title>
+    <script
+      data-src="https://kit.fontawesome.com/ae360af17e.js"
+      crossorigin="anonymous"
+      src="https://kit.fontawesome.com/ae360af17e.js"
+    ></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => console.log(reg.scope));
+        });
+      }
+    </script>
+  </body>
+</html>

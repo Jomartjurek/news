@@ -1,0 +1,49 @@
+{
+  "Lang": "English",
+  "News": "News",
+  "Home": "Home",
+  "About": "About us",
+
+  "soc": "Social Code",
+
+  "theme": "Visually Impaired",
+
+  "profile": "Profile",
+  "signin": "Sign in",
+  "exit": "Sign out",
+  "really_ex": "Do you really want to get out?",
+  "changLang": "Change lang",
+  "sign": "Login",
+  "w_google": "Continue with Google",
+  "empty": "It's empty here for now!",
+
+  "P-create": "Create news",
+  "P-recreate": "Edit news",
+  "P-nameTheme": "Enter the theme name",
+  "P-theme": "Theme",
+  "P-img1": "Drag image here or click to select file",
+  "P-img2": "Image selected! Click to change or drag here",
+  "P-img3": "Select a new image",
+  "P-desk": "Enter news description",
+  "P-createBTN": "Create",
+  "P-change": "Change",
+  "P-save": "Save",
+  "P-delete": "Delete",
+  "P-close": "Cancel",
+  "P-newsList": "News List",
+
+  "P-changedNews": "You have changed the news!",
+  "P-createdNews": "You have created the news!",
+  "P-deletedNews": "Are you sure you want to delete the news?",
+  "P-allInput": "Fill in all the fields!",
+
+  "NI-last": "Last news",
+  "N-all": "All news",
+
+  "Thm-size": "Font Size",
+  "Thm-colorN": "C",
+  "Thm-color": "Site Color",
+  "Thm-img": "Images",
+  "Thm-set": "Settings",
+  "Thm-standart": "Standard Site Version"
+}
