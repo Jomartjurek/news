@@ -26,13 +26,15 @@ const Navbar = () => {
       : false
   );
 
-  
   const setMenu = () => {
     setUserMenu((prev) => !prev);
   };
 
   const showMenu = () => {
     setBurger((prev) => !prev);
+    if (burger) {
+      document.querySelector("body").style.overflow = "auto";
+    } else document.querySelector("body").style.overflow = "hidden";
   };
 
   const signOut = () => {
@@ -85,13 +87,16 @@ const Navbar = () => {
         </div>
         {user ? (
           <button onClick={setMenu} className={Style.header_ava}>
-            {<img width={37} src={user.photoURL} alt="ava" />}
+            {<img width={37} src={user.photoURL ? user.photoURL : 'https://static.tildacdn.com/tild3238-3834-4566-b939-643034303766/no-profile.png'} alt="ava" />}
           </button>
         ) : (
           <button
             ref={signBtnRef}
             className={Style.header_signin}
-            onClick={signIn}
+            onClick={() => {
+              signIn();
+              document.querySelector("body").style.overflow = "hidden";
+            }}
           >
             <i
               style={{ marginRight: "10px" }}

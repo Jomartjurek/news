@@ -8,7 +8,6 @@ import { doc } from "firebase/firestore";
 
 const Preloader = lazy(() => import("./Preloaders/Preloader")),
   // Головной комонент с роутизацией всего приложения подгружаются все файлы и происходит рендер путей для авторизованных пользователей и для неовторизованных
-  Menu = lazy(() => import("../menu/Menu")),
   News = lazy(() => import("../main/news/News")),
   NewsID = lazy(() => import("../main/news/NewsID")),
   About = lazy(() => import("../main/about/About")),
@@ -22,7 +21,7 @@ const Preloader = lazy(() => import("./Preloaders/Preloader")),
   publicRoutes = [
     {
       path: "/",
-      Component: Menu,
+      Component: About,
     },
     {
       path: "/news",
@@ -31,10 +30,6 @@ const Preloader = lazy(() => import("./Preloaders/Preloader")),
     {
       path: "/news/:id",
       Component: NewsID,
-    },
-    {
-      path: "/about",
-      Component: About,
     },
   ];
 

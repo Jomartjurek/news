@@ -84,6 +84,16 @@ img {
   pointer-events: none;
 }
 
+p,
+h4,
+h3,
+h1,
+h2,
+h6,
+h5 {
+  color: var(--text);
+}
+
 select option {
   color: var(--text);
 }

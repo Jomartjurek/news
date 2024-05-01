@@ -19,11 +19,11 @@ const Social = () => {
       src: "../../img/social/whatsapp.png",
       alt: "whatsapp",
     },
-    {
-      to: "#",
-      src: "../../img/social/gmail.png",
-      alt: "mail",
-    },
+    // {
+    //   to: "#",
+    //   src: "../../img/social/gmail.png",
+    //   alt: "mail",
+    // },
   ];
 
   return (

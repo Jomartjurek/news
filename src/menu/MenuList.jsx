@@ -13,10 +13,6 @@ const MenuList = ({ style, setMenu }) => {
       to: "/news",
       title: "News",
     },
-    {
-      to: "/about",
-      title: "About",
-    },
   ];
   return (
     <nav className={style.header_menu}>
@@ -27,6 +23,7 @@ const MenuList = ({ style, setMenu }) => {
             <li key={id}>
               <NavLink
                 onClick={() => {
+                  document.querySelector("body").style.overflow = "auto";
                   setMenu && setMenu((prev) => !prev); // Закрытие меню при клике на пункт
                 }}
                 className={({ isActive }) => [isActive && style.active]} // Добавление активного класса при активной странице

@@ -134,6 +134,15 @@
       display: none;
     }
 
+    &_signin {
+      i {
+        margin: 0 !important;
+      }
+      b {
+        display: none;
+      }
+    }
+
     &_menu_absolute {
       display: block;
       position: absolute;

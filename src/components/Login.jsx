@@ -1,4 +1,9 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import {
   query,
   orderBy,
@@ -10,19 +15,8 @@ import {
 import { useTranslation } from "react-i18next";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db, auth } from "../index";
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Style from "../styles/components/login/login.module.scss";
-import ModalClose from "./modalClose";
-
-const Copyright = () => {
-  return (
-    <div className={Style.copyright}>
-      <p>{"Copyright © "}</p>
-      <p>Jomart jurek</p>
-      <p>{new Date().getFullYear()}</p>
-    </div>
-  );
-};
 
 const Login = ({ setLogin, btnRef }) => {
   const [users] = useCollectionData(
@@ -30,19 +24,19 @@ const Login = ({ setLogin, btnRef }) => {
   );
   const [t] = useTranslation();
   const loginRef = useRef(null);
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [regist, setRegist] = useState(false);
 
-  // Function to handle Google sign-in
   const login = async () => {
     const provider = new GoogleAuthProvider();
     const { user } = await signInWithPopup(auth, provider);
 
-    // Check if user already exists in the database
     let res = true;
     users.forEach((data) => {
       if (data.uid === user.uid) res = false;
     });
 
-    // If user does not exist, add them to the database
     if (res) {
       const createCollect = async () => {
         await setDoc(doc(db, "users", user.uid), {
@@ -55,52 +49,126 @@ const Login = ({ setLogin, btnRef }) => {
       };
       createCollect();
     }
-
-    // Close the login modal
-    setLogin(false);
   };
 
-  // Effect to listen for Escape key press to close the modal
-  // and click outside the modal to close it
+  const signUp = async (e) => {
+    e.preventDefault();
+
+    if (pass.length >= 6) {
+      await createUserWithEmailAndPassword(auth, email, pass)
+        .then((user) => {
+          setEmail((prev) => (prev = ""));
+          setPass((prev) => (prev = ""));
+
+          setDoc(doc(db, "users", user.user.uid), {
+            uid: user.user.uid,
+            displayName: user.user.displayName,
+            photoURL: user.user.photoURL,
+            createdAt: Timestamp.fromDate(new Date()),
+            admin: false,
+          });
+        })
+        .catch(() => {
+          alert(t("nw1"), "", "error");
+        });
+    } else {
+      alert(t("nw2"), "", "error");
+    }
+  };
+
+  const signIn = async (e) => {
+    e.preventDefault();
+    await signInWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        setEmail((prev) => (prev = ""));
+        setPass((prev) => (prev = ""));
+      })
+      .catch(() => {
+        alert(t("nw3"), "", "error");
+      });
+  };
+
   useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        setLogin(false);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        setLogin((prev) => (prev = false));
       }
-    };
+    });
 
-    const handleClickOutside = (event) => {
-      if (!loginRef.current.contains(event.target)) {
-        setLogin(false);
-      }
+    const handler = (event) => {
+      if (!loginRef.current.contains(event.target))
+        setLogin((prev) => (prev = false));
+      document.querySelector("body").style.overflow = "auto";
     };
-
-    document.addEventListener("keydown", handleEsc);
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [setLogin]);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  });
 
   return (
     <>
-      <ModalClose
-        modal={true}
-        setModal={setLogin}
-        refModal={loginRef}
-        refButton={btnRef}
-        refButton2={""}
-      />
       <section className={Style.login}>
         <div ref={loginRef} className={Style.login_block}>
+          <img
+            className={Style.login_block_logo}
+            src="../img/logo1.png"
+            alt="logo"
+            width={130}
+          />
           <h1>{t("sign")}</h1>
           <button onClick={login} type="submit">
             <img width={18} src="../img/Login/google.png" alt="google icon" />
             {t("w_google")}
           </button>
-          <Copyright />
+          <p style={{ marginBottom: "20px" }}>{t("or")}</p>
+          {!regist ? (
+            <form className={Style.login_block_email}>
+              <input
+                onChange={(e) => setEmail((prev) => (prev = e.target.value))}
+                type="email"
+                placeholder="Example@gmail.com"
+              />
+              <input
+                onChange={(e) => setPass((prev) => (prev = e.target.value))}
+                type="password"
+                placeholder={t("pas")}
+              />
+              <p
+                onClick={() => {
+                  setRegist((prev) => !prev);
+                }}
+                className={Style.login_block_email_reg}
+              >
+                {!regist ? t("regis") : t("auth")}
+              </p>
+              <button onClick={signIn}>
+                <i className="fa-solid fa-right-to-bracket"></i> {t("auth")}
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={signUp} className={Style.login_block_email}>
+              <input
+                onChange={(e) => setEmail((prev) => (prev = e.target.value))}
+                type="email"
+                placeholder="Example@gmail.com"
+              />
+              <input
+                onChange={(e) => setPass((prev) => (prev = e.target.value))}
+                type="password"
+                placeholder={t("pas")}
+              />
+              <p
+                onClick={() => {
+                  setRegist((prev) => !prev);
+                }}
+                className={Style.login_block_email_reg}
+              >
+                {!regist ? t("regis") : t("auth")}
+              </p>
+              <button>
+                <i className="fa-solid fa-right-to-bracket"></i> {t("regis")}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </>
