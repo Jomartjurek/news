@@ -2,7 +2,7 @@ import { useState } from "react";
 import Style from "../styles/menu/Theme/Theme.module.scss";
 import { useTranslation } from "react-i18next";
 
-const Theme = ({ title, setLogoState }) => {
+const Theme = ({ title }) => {
   const [t] = useTranslation();
   const htmlDOM = document.querySelector("html");
   // Устанавливаем тему приложения в зависимости от предпочтений пользователя или сохраненной настройки
@@ -33,14 +33,12 @@ const Theme = ({ title, setLogoState }) => {
     htmlDOM.classList.add("dark");
     htmlDOM.classList.remove("light");
     window.localStorage.setItem("theme", "dark");
-    setLogoState((prev) => (prev = false));
   };
 
   const light = () => {
     htmlDOM.classList.add("light");
     htmlDOM.classList.remove("dark");
     window.localStorage.setItem("theme", "light");
-    setLogoState((prev) => (prev = true));
   };
 
   const setImgDis = () => {

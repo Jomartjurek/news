@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const About = () => {
   const [t] = useTranslation();
-  document.title = t("Home");
+  document.title = 'Jomart jurek | '+ t("Home");
   return (
     <main>
       <Section>

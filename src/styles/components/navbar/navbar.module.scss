@@ -31,6 +31,17 @@
 
   &_logo {
     margin-left: 40px;
+    &_position {
+      display: flex;
+      align-items: center;
+
+      h2 {
+        color: #2171ad;
+      }
+      img {
+        margin-right: 15px;
+      }
+    }
   }
 
   &_ava {
@@ -59,7 +70,7 @@
 
     a {
       padding: 5px;
-      color: var(--text);
+      color: #2171ad;
     }
   }
 
@@ -117,10 +128,10 @@
 }
 
 .active {
-  border-bottom: 4px solid #ff8c61;
+  border-bottom: 4px solid #2171ad;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1200px) {
   .header {
     &_menu_pc {
       display: none;
@@ -163,7 +174,7 @@
         text-align: center;
       }
       a {
-        color: var(--text);
+        // color: var(--text);
         font-size: var(--font24);
       }
     }

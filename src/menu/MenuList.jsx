@@ -13,6 +13,18 @@ const MenuList = ({ style, setMenu }) => {
       to: "/news",
       title: "News",
     },
+    // {
+    //   to: "/about",
+    //   title: "About",
+    // },
+    {
+      to: "/contact",
+      title: "Contact",
+    },
+    {
+      to: "/photos",
+      title: "Фото отчет",
+    },
   ];
   return (
     <nav className={style.header_menu}>

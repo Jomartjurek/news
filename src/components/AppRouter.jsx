@@ -11,7 +11,10 @@ const Preloader = lazy(() => import("./Preloaders/Preloader")),
   News = lazy(() => import("../main/news/News")),
   NewsID = lazy(() => import("../main/news/NewsID")),
   About = lazy(() => import("../main/about/About")),
+  // Home = lazy(() => import("../main/home/Home")),
+  Contact = lazy(() => import("../main/Contact/Contact")),
   Profile = lazy(() => import("../main/profile/Profile")),
+  Photos = lazy(() => import("../main/photos/Photos")),
   privatRoutes = [
     {
       path: "/profile",
@@ -22,6 +25,18 @@ const Preloader = lazy(() => import("./Preloaders/Preloader")),
     {
       path: "/",
       Component: About,
+    },
+    // {
+    //   path: "/about",
+    //   Component: About,
+    // },
+    {
+      path: "/contact",
+      Component: Contact,
+    },
+    {
+      path: "/photos",
+      Component: Photos,
     },
     {
       path: "/news",

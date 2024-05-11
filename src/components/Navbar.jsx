@@ -20,11 +20,6 @@ const Navbar = () => {
   const [login, setLogin] = useState(false);
   const signBtnRef = useRef(null);
   const [burger, setBurger] = useState(null);
-  const [logoState, setLogoState] = useState(
-    document.querySelector("html").getAttribute("class") === "light"
-      ? true
-      : false
-  );
 
   const setMenu = () => {
     setUserMenu((prev) => !prev);
@@ -71,10 +66,11 @@ const Navbar = () => {
         <Link className={Style.header_logo_position} to={"/"}>
           <img
             className={Style.header_logo}
-            src={logoState ? "../../img/logo.png" : "../../img/logo1.png"}
-            width={130}
+            src={"../../img/logo.jpg"}
+            width={40}
             alt="logo"
           />
+          <h2>Jomart-jurek</h2>
         </Link>
 
         <div className={Style.header_menu_pc}>
@@ -82,12 +78,22 @@ const Navbar = () => {
         </div>
 
         <div className={Style.header_theme_pc}>
-          <Theme setLogoState={setLogoState} title={t("theme")} />
+          <Theme title={t("theme")} />
           <Lang setLang={setLang} />
         </div>
         {user ? (
           <button onClick={setMenu} className={Style.header_ava}>
-            {<img width={37} src={user.photoURL ? user.photoURL : 'https://static.tildacdn.com/tild3238-3834-4566-b939-643034303766/no-profile.png'} alt="ava" />}
+            {
+              <img
+                width={37}
+                src={
+                  user.photoURL
+                    ? user.photoURL
+                    : "https://static.tildacdn.com/tild3238-3834-4566-b939-643034303766/no-profile.png"
+                }
+                alt="ava"
+              />
+            }
           </button>
         ) : (
           <button
@@ -131,11 +137,7 @@ const Navbar = () => {
           <section className={Style.header_menu_absolute}>
             <MenuList style={Style} setMenu={setBurger} />
             <Lang setLang={setLang} />
-            <Theme
-              setBurger={setBurger}
-              setLogoState={setLogoState}
-              title={t("theme")}
-            />
+            <Theme setBurger={setBurger} title={t("theme")} />
           </section>
         )}
       </header>
