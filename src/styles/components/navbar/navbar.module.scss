@@ -131,7 +131,7 @@
   border-bottom: 4px solid #2171ad;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .header {
     &_menu_pc {
       display: none;
@@ -161,7 +161,7 @@
       padding-bottom: 60px;
       background-color: var(--main_bg);
       top: 60px;
-      border-bottom: 2px solid #ff8c61;
+      border-bottom: 2px solid #2171ad;
     }
 
     &_menu {
@@ -174,7 +174,6 @@
         text-align: center;
       }
       a {
-        // color: var(--text);
         font-size: var(--font24);
       }
     }
