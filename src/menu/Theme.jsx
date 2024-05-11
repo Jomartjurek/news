@@ -33,12 +33,14 @@ const Theme = ({ title }) => {
     htmlDOM.classList.add("dark");
     htmlDOM.classList.remove("light");
     window.localStorage.setItem("theme", "dark");
+    setViewPanel((prev) => !prev);
   };
 
   const light = () => {
     htmlDOM.classList.add("light");
     htmlDOM.classList.remove("dark");
     window.localStorage.setItem("theme", "light");
+    setViewPanel((prev) => !prev);
   };
 
   const setImgDis = () => {
