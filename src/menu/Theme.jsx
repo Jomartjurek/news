@@ -177,14 +177,14 @@ const Theme = ({ title }) => {
         </div>
       )}
       {/* Кнопка для отображения панели настроек */}
-      <button
+      <div
         className={Style.theme}
         onClick={() => {
           setViewPanel((prev) => !prev);
         }}
       >
         {title}
-      </button>
+      </div>
     </>
   );
 };

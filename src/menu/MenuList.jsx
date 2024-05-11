@@ -23,7 +23,7 @@ const MenuList = ({ style, setMenu }) => {
     },
     {
       to: "/photos",
-      title: "Фото отчет",
+      title: "P-photo",
     },
   ];
   return (

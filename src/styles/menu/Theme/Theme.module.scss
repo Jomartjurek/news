@@ -17,6 +17,7 @@
   .theme {
     margin: 0 auto;
     margin-top: 10px;
+    justify-content: center;
     font-size: var(--font22);
   }
 }
@@ -89,7 +90,8 @@
 
 @media (max-width: 740px) {
   .invalPanel {
-    padding-bottom: 95px;
+    height: 100%;
+    align-items: center;
     &_content {
       div {
         margin-bottom: 20px;
